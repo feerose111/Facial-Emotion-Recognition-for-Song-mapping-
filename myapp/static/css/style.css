@@ -8,7 +8,7 @@
     box-shadow: var(--inner-shadow);
 }
 body {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #021a05, #030F12);
     color: white; /* Ensure text readability */
   }
 h1 {
@@ -61,4 +61,27 @@ h1 {
 
 .emotion-table td a:hover {
   color: #FFD700; /* Hover color */
+}
+
+.video-area {
+  position: relative; /* Make the video-area a positioned element */
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevent the video from overflowing */
+}
+
+#video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video fits well within the area */
+}
+
+.text-center button {
+  position: relative; /* Ensure buttons are positioned above */
+  z-index: 10; /* Higher z-index to place buttons above the video */
 }
