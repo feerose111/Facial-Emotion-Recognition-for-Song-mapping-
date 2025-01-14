@@ -12,9 +12,6 @@
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Bigelow+Rules&display=swap" rel="stylesheet">
   <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-    crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
@@ -110,12 +107,20 @@
         <button class="btn btn-secondary" onclick="window.location.reload();">
           <i class="fas fa-redo"></i> Refresh
         </button>
+          <a href="{% url  'feedback' %}">
+            <button id="feedback" class="btn btn-primary">
+              Feedbacks
+           </button>
+          </a>              
       </div>
     </div>
   </div>
 
   <!-- Scripts -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+  crossorigin="anonymous"></script>
   <script>
     const videoElement = document.getElementById('video');
     const startCaptureButton = document.getElementById('startCapture');

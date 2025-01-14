@@ -46,18 +46,29 @@ def index(request):
 def face_feed(request):
     return render(request, 'index.html')
 
+def user_feedback(request):
+    
+    data = Customer.objects.all()
+    return render(request, 'userFeedback.html', {'data':data})
+
 def home(request):
     if request.method =='POST':
         data = request.POST
         name = data['name']
         email = data['email']
-
         message = data['message']
         
         Customer.objects.create(name=name, email=email, message = message)
         messages.success(request , ("Message was sent succesfully !"))
         return render(request, 'landingpage.html')
     return render(request, 'landingpage.html')
+
+def delete_user(request, id):
+    data = Customer.objects.get(id=id)
+    #data.isDelete = True
+    data.delete()
+    #data.save()
+    return redirect('feedback')
     
 
 def video_feed(request):
