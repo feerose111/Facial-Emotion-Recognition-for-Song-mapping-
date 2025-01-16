@@ -1,45 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#1885ed">
-  <title>FERS.io - Homepage</title>
-  {% load static %}
- <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
-
-<!-- bootstrap link -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-
-<!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
-
-<body>
-  <header id="header">
-    <div class="logo-section">
-       <img id="header-img" class="site-logo" src="{% static 'images/icon.webp' %}" alt="company-logo">
-    </div>
-    <nav id="nav-bar" class="navigation-bar">
-      <ul style="list-style:none;" class="navigation">
-        <li><a class="nav-link" href="#main">HOME</a></li>
-        <li><a class="nav-link" href="#story">Our Product</a></li>
-        <li><a class="nav-link" href="#designs">About Us</a></li>
-        <li><a class="nav-link" href="#contact">Contact</a></li>
-        {% if user.is_authenticated %}
-        
-        <li><a class="nav-link" href="{% url 'face_feed' %}">Video Feed</a></li>
-        <li><a class="nav-link" href="{% url 'logout' %}"><button class="login-btn">Logout</button></a></li>
-      {% else %}
-
-        <li><a class="nav-link" href="{% url 'login' %}"><button class="login-btn">Login</button></a></li>
-      {% endif %}
-      </ul>
-    </nav>
-  </header>
-
-  <main>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  FERS.io - Homepage
+{% endblock title %}
+{% block extra-link %}
+  
+{% endblock extra-link %}
+{% block content %}
+  <main class="pt-5">
     <div class="container-fluid">
-      <section id="main" class="cover-sect"> 
+      <section id="main" class="cover-sect d-flex align-items-center justify-content-center text-center"> 
         {% if user.is_authenticated %}
         {% if messages %}
         {% for  message in messages %}
@@ -72,8 +42,8 @@ integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEw
  
 
       <!--    description  ........ -->
-      <section id="story" class="story-sect">
-        <div class="box-feature">
+      <section id="story" class="story-sect py-5">
+        <div class="box-feature-img2">
           <img src="{% static 'images/E1.webp' %}" />
           </div>
         <div class="section-text">
@@ -92,14 +62,14 @@ integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEw
             <div class="cont">
               <figure>
                 <img src="{% static 'images/feerose.jpg' %}" height="350" width="260"alt="Fee Rose">
-                <h1 style="font-size: 20px;">Firoj Raut</h1>
+                <h1 style="font-family: 'Arial', sans-serif; font-size: 20px;">Firoj Raut</h1>
                 <p>Backend Developer</p>
               </figure>
             </div>
             <div class="cont">
               <figure>
                 <img src="{% static 'images/yubraj.jpg' %}" height="350" width="260" alt="Yubraj">
-                <h1 style="font-size: 20px;">Yubraj Shrestha</h1>
+                <h1 style=" font-family: 'Arial', sans-serif; font-size: 20px;">Yubraj Shrestha</h1>
                  <p> Model Designer</p>
               </figure>
             </div>
@@ -107,7 +77,7 @@ integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEw
             <div class="cont">
               <figure>
                 <img src="{% static 'images/melan.jpg' %}" height="350" width="260"alt="Melan">
-                <h1 style="font-size: 20px;">Milan Rajbanshi</h1>
+                <h1 style="font-family: 'Arial', sans-serif; font-size: 20px;">Milan Rajbanshi</h1>
                 <p>UI Designer</p>
               </figure>
             </div>
@@ -116,10 +86,10 @@ integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEw
 
 
       <!--   contact section   ........ -->
-      <section id="contact" class="contact-section">
+      <section id="contact" class="contact-section py-5 mb-3">
         <div class="section-text">
-          <h2>Get in touch</h2>
-          <p>We would love to hear from you! <br><br>If you would like to receive our monthly catalogue subscribe by filling in the form with your name and email address</p>
+          <h2>Share your views</h2>
+          <p>We would love to hear from you! <br><br>If you would like to send us feedbacks by filling in the form with your name and email address</p>
         </div>
         <div class="contact-info">
           <div class="form-box">
@@ -141,23 +111,5 @@ integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEw
 
       </section>
     </div>
-
   </main>
-  <footer class="footer-section">
-    <div class="footer-info">
-      <ul style="list-style:none;">
-        <li><span>Privacy</span></li>
-        <li><span>Terms</span></li>
-        <li><span>Contact</span></li>
-      </ul>
-    </div>
-    <span class="personal-info">Created by Lulet<br>Reach out on twitter @luizoutlets</span>
-    <span>Copyright 2019</span>
-  </footer>
-
- <!-- bootstrap -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
- integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock content %}

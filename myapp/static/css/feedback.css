@@ -2,6 +2,18 @@ body {
   background:linear-gradient(to right, #030F12,#03181b);
   color: white;
   }
+
+h1{
+  padding-top: 100px;
+  font-family: 'Arial', sans-serif; /* Example font */
+  color: #FFFFFF; /* Adjust based on your background */
+  font-size: 48px; /* Example size, adjust as needed */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000000; /* Black shadow for depth, adjust as needed */
+  letter-spacing: 1px; /* Adjust as needed */
+  text-align: center; /* Center the title */
+  margin-top: 50px; /* Adjust based on your layout */
+}
   .feedback-header
   {
     color: #fff;

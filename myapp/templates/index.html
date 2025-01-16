@@ -1,25 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emotion Music Recommendation</title>
-
-  <!-- Stylesheets -->
+  {% extends "base.html" %}
   {% load static %}
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Bigelow+Rules&display=swap" rel="stylesheet">
-  <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  {% block title %}
+    Emotion Music Recommendation
+  {% endblock title %}
 
+  {% block extra-link %}
+    <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet" />   
+  {% endblock extra-link %}
+
+  {% block content %}
   <style>
     body {
       background:linear-gradient(to right, #030F12,#03181b);
       color: white;
     }
-
+    h1 {
+      padding-top: 70px;
+      font-family: 'Arial', sans-serif; 
+      color: #FFFFFF; 
+      font-size: 48px; 
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000000;
+      letter-spacing: 1px; 
+      text-align: center;
+      margin-top: 50px; 
+    }
+  
+    h3 {
+      font-family: 'Arial', sans-serif;
+      color: rgba(255, 255, 255, 0.8); 
+      font-size: 32px; 
+      font-weight: normal; 
+      text-shadow: 1px 1px 3px #000000;
+      letter-spacing: 0.5px; 
+      text-align: center; 
+      margin-top: 20px; 
+    }
     .card {
       background: rgba(255, 255, 255, 0.1);
       border: none;
@@ -42,9 +58,7 @@
       margin-right: 10px;
     }
   </style>
-</head>
-
-<body>
+  
   <div class="container py-5">
     <div class="row mb-4 text-center">
       <h1 class="fw-bold">Emotion Music Recommender</h1>
@@ -101,86 +115,14 @@
     <!-- Navigation Buttons -->
     <div class="row mt-4">
       <div class="col text-center button-group">
-        <a href="{% url 'home' %}" class="btn btn-light">
-          <i class="fas fa-home"></i> Home
-        </a>
         <button class="btn btn-secondary" onclick="window.location.reload();">
           <i class="fas fa-redo"></i> Refresh
         </button>
-          <a href="{% url  'feedback' %}">
-            <button id="feedback" class="btn btn-primary">
-              Feedbacks
-           </button>
+          <a href="{% url  'feedback' %}"  class="btn btn-light" >
+            <i class="fa-regular fa-comment"></i>Feedbacks             
           </a>              
       </div>
     </div>
   </div>
-
-  <!-- Scripts -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-  crossorigin="anonymous"></script>
-  <script>
-    const videoElement = document.getElementById('video');
-    const startCaptureButton = document.getElementById('startCapture');
-    const stopCaptureButton = document.getElementById('stopCapture');
-
-    let mediaStream = null;
-
-    // Start video capture
-    startCaptureButton.addEventListener('click', async () => {
-      try {
-        mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
-        videoElement.srcObject = mediaStream;
-        startCaptureButton.disabled = true;
-        stopCaptureButton.disabled = false;
-        console.log('Start Button Disabled:', startCaptureButton.disabled);
-      } catch (err) {
-        alert('Error accessing camera: ' + err.message);
-      }
-    });
-    // Stop video capture
-    stopCaptureButton.addEventListener('click', () => {
-    if (mediaStream) {
-      // Get all tracks from the media stream
-      const tracks = mediaStream.getTracks();
-
-      // Stop each track
-      tracks.forEach(track => track.stop());
-
-      // Clear the media stream
-      mediaStream = null;
-
-      // Remove video stream source
-      videoElement.srcObject = null;
-
-      // Update button states
-      startCaptureButton.disabled = false;
-      stopCaptureButton.disabled = true;
-      console.log('Stop Button Enabled:', stopCaptureButton.disabled);
-    } else {
-      alert('No active video stream to stop.');
-    }
-    });
-
-
-
-    // Periodically update the song list (dummy data example)
-    setInterval(() => {
-      $.getJSON('/t', function (data) {
-        console.log('Data received from /t:', data);
-        const songList = $('#songList');
-        songList.empty(); // Clear existing songs
-        data.forEach((item, index) => {
-          songList.append(`<tr>
-            <td>Song ${index + 1}</td>
-            <td><a href="${item.uri}" target="_blank" class="text-info">${item.uri}</a></td>
-          </tr>`);
-        });
-      });
-    }, 10000); // Update every 10 seconds
-  </script>
-</body>
-
-</html>
+  <script  type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% endblock content %}
